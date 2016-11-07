@@ -1,0 +1,85 @@
+Controller:
+    bin/rails generate controller NameofController action
+    i.e. Welcome index
+
+    >> app/controllers/welcome_controller.rb
+    >> app/views/welcome/index.html.erb
+    >> app/helpers/welcome_helper.rb
+    >> app/assets/stylesheets/welcome.scss
+
+Routing:
+    config/routes.rb
+    >> get 'welcome/index'
+    >> root 'welcome#index'
+
+    Resource Roots:
+        resources :names
+
+    Run bin/rails routes to list routes
+
+Routes Need Controllers!:
+    bin/rails generate controller Articles
+
+    >> app/controllers/articles_controller.rb
+
+    Create:
+    >> app/views/articles/new.html.erb
+
+Model:
+    bin/rails generate model Article title:string text:text
+
+    >> articles table in DB
+
+    Migrate:
+        bin/rails db:migrate
+
+A Complete Controller:
+  class ArticlesController < ApplicationController
+    def index
+      @articles = Article.all
+    end
+
+    def show
+      @article = Article.find(params[:id])
+    end
+
+    def new
+      @article = Article.new
+    end
+
+    def edit
+      @article = Article.find(params[:id])
+    end
+
+    def create
+      @article = Article.new(article_params)
+
+      if @article.save
+        redirect_to @article
+      else
+        render 'new'
+      end
+    end
+
+    def update
+      @article = Article.find(params[:id])
+
+      if @article.update(article_params)
+        redirect_to @article
+      else
+        render 'edit'
+      end
+    end
+
+    def destroy
+      @article = Article.find(params[:id])
+      @article.destroy
+
+      redirect_to articles_path
+    end
+
+    private
+    def article_params
+      params.require(:article).permit(:title, :text)
+    end
+  end

@@ -1,0 +1,11 @@
+<% @message.update_attribute(:read, true) # opens the message on viewing %>
+
+<h1>Subject: <%= @message.subject %></h1>
+
+<h2>Sent by: <%= @message.sender %></h2>
+<h2>On: <%= @message.details %></h2>
+
+<p><%= @message.body %></p>
+<p><%= @message.read ? "Read" : "Unread" %></p>
+
+<%= link_to 'Inbox', messages_path %>

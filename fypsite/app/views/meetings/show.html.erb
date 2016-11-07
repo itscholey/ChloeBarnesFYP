@@ -1,0 +1,22 @@
+<p>
+  <strong>Subject:</strong>
+  <%= @meeting.subject %>
+</p>
+
+<p>
+  <strong>Date and Time:</strong>
+  <%= @meeting.date_and_time %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @meeting.location %>
+</p>
+
+<p>
+  <strong>Agenda:</strong>
+  <%= @meeting.agenda %>
+</p>
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%= link_to 'Back', meetings_path %>
