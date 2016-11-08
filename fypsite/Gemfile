@@ -47,6 +47,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'devise', '3.5.10'
 
 # Refinery CMS
 gem 'refinerycms', '~> 3.0'

@@ -150,7 +150,7 @@ GEM
       refinerycms-core (~> 3.0.0)
     refinerycms-authentication-devise (1.0.4)
       actionmailer (~> 4.2, >= 4.2.0)
-      devise (~> 3.0, >= 3.2.4)
+      devise (>= 3.2.4)
       friendly_id (~> 5.1.0)
       refinerycms-core (~> 3.0, >= 3.0.0)
     refinerycms-core (3.0.4)
@@ -247,6 +247,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  devise (= 3.5.10)
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.7.1)

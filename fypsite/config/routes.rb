@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  devise_for :users, :controllers => { :registrations => 'users/registrations',
+                                       :sessions => 'users/sessions'}
+  #get 'welcome/index'
 
   resources :meetings
   resources :messages
-  root 'welcome#index'
+  resources :users
+  #root 'welcome#index'
+  root 'pages#index'
 
   # This line mounts Refinery's routes at the root of your application.
   # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.
