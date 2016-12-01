@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110153301) do
+ActiveRecord::Schema.define(version: 20161201150910) do
 
   create_table "meetings", force: :cascade do |t|
     t.string   "subject"
@@ -197,14 +197,6 @@ ActiveRecord::Schema.define(version: 20161110153301) do
   add_index "seo_meta", ["id"], name: "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], name: "id_type_index_on_seo_meta"
 
-  create_table "simple_users", force: :cascade do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -225,5 +217,15 @@ ActiveRecord::Schema.define(version: 20161110153301) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_meetings", force: :cascade do |t|
+    t.integer "user_id",    null: false
+    t.integer "meeting_id", null: false
+  end
+
+  create_table "users_messages", force: :cascade do |t|
+    t.integer "user_id",    null: false
+    t.integer "message_id", null: false
+  end
 
 end
