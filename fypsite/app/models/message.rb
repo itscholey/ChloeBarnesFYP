@@ -1,3 +1,5 @@
 class Message < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  belongs_to :user #sender
+  has_many :message_recipients
+  has_many :users, through: :message_recipients
 end

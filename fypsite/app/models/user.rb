@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_and_belongs_to_many :meetings
-  has_and_belongs_to_many :messages
+         
+  has_many :meeting_attendees
+  has_many :meetings, through: :meeting_attendees
+
+  has_many :message_recipients
+  has_many :messages, through: :message_recipients
 end

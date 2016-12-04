@@ -1,3 +1,5 @@
 class Meeting < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  belongs_to :user #organiser
+  has_many :meeting_attendees
+  has_many :users, through: :meeting_attendees
 end
