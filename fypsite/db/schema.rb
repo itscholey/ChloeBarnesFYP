@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204170635) do
+ActiveRecord::Schema.define(version: 20161204181558) do
+
+  create_table "meeting_attendees", force: :cascade do |t|
+    t.integer  "meeting_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "meetings", force: :cascade do |t|
     t.string   "subject"
@@ -20,6 +27,13 @@ ActiveRecord::Schema.define(version: 20161204170635) do
     t.text     "agenda"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "message_recipients", force: :cascade do |t|
+    t.integer  "meeting_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -218,15 +232,5 @@ ActiveRecord::Schema.define(version: 20161204170635) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "users_meetings", force: :cascade do |t|
-    t.integer "user_id",    null: false
-    t.integer "meeting_id", null: false
-  end
-
-  create_table "users_messages", force: :cascade do |t|
-    t.integer "user_id",    null: false
-    t.integer "message_id", null: false
-  end
 
 end
