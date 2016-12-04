@@ -17,7 +17,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.read = false;
+    @message.read = false
+    @message.sender = current_user.id
     if @message.save
       redirect_to @message
     else
@@ -40,6 +41,6 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:sender, :recipient, :subject, :body, :read)
+    params.require(:message).permit(:subject, :body, :read)
   end
 end

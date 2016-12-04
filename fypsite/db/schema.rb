@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201235323) do
+ActiveRecord::Schema.define(version: 20161204170635) do
+
+  create_table "meetings", force: :cascade do |t|
+    t.string   "subject"
+    t.datetime "date_and_time"
+    t.string   "location"
+    t.text     "agenda"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "messages", force: :cascade do |t|
-    t.string   "sender"
     t.string   "recipient"
     t.string   "subject"
     t.text     "body"
@@ -22,6 +30,7 @@ ActiveRecord::Schema.define(version: 20161201235323) do
     t.boolean  "read"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "sender_id"
   end
 
   create_table "refinery_authentication_devise_roles", force: :cascade do |t|

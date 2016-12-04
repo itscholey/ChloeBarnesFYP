@@ -21,3 +21,9 @@
 h1{
   color:#CCCCFF;
 }
+
+div div{
+  padding:10px;
+  margin:50px;
+  background-color: #CCCCCC;
+}
